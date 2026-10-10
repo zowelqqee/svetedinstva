@@ -1,0 +1,26 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "functions": {"api/router.js": {"maxDuration": 30}},
+  "rewrites": [
+    {"source": "/api/visit", "destination": "/api/router?action=visit"},
+    {"source": "/api/stats", "destination": "/api/router?action=stats"},
+    {"source": "/api/stats.csv", "destination": "/api/router?action=csv"},
+    {"source": "/api/stats/login", "destination": "/api/router?action=login"},
+    {"source": "/api/stats/logout", "destination": "/api/router?action=logout"},
+    {"source": "/download/mask", "destination": "/api/router?action=download"}
+  ],
+  "headers": [
+    {"source": "/(.*)", "headers": [
+      {"key": "X-Content-Type-Options", "value": "nosniff"},
+      {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
+      {"key": "Content-Security-Policy", "value": "default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"}
+    ]},
+    {"source": "/stats", "headers": [{"key": "X-Robots-Tag", "value": "noindex, nofollow"}, {"key": "Cache-Control", "value": "no-store"}]},
+    {"source": "/materials/(.*)", "headers": [{"key": "Content-Disposition", "value": "attachment"}]}
+  ]
+}

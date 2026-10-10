@@ -1,0 +1,13 @@
+{
+  "name": "svet-edinstva",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": "22.x"},
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node --env-file-if-exists=.env.local scripts/dev.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {"@vercel/blob": "^2.0.0"}
+}
