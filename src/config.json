@@ -1,7 +1,7 @@
 {
   "email": "",
   "maskPath": "",
-  "rulesPath": "",
+  "rulesPath": "public/rules.pdf",
   "heroPath": "public/hero.png",
   "cultureLogoPath": "public/culture-logo.png"
 }
