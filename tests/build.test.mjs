@@ -12,6 +12,15 @@ test('Root build exports every browser asset without unresolved config or privat
   await access('dist/stats.html');
   const vercel=JSON.parse(await readFile('vercel.json','utf8'));
   assert.equal(vercel.outputDirectory,'dist');
+  for (const file of ['index.html', 'stats.html', '404.html']) {
+    const page = await readFile('dist/' + file, 'utf8');
+    assert.equal((page.match(/data-cf-beacon=/g) || []).length, 1, file);
+    assert.match(page, /47dbbc97ac5848e88fdcc43f978a8574/);
+    assert.match(page, /type="module" src="https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js"/);
+  }
+  const csp = vercel.headers.flatMap(block => block.headers).find(h => h.key === 'Content-Security-Policy').value;
+  assert.match(csp, /script-src 'self' https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js;/);
+  assert.match(csp, /connect-src 'self' https:\/\/cloudflareinsights\.com;/);
   assert.equal(vercel.rewrites.find(r=>r.source==='/download/mask').destination,'/api/router?action=download');
 });
 test('Vercel bridge accepts parsed JSON body and rewritten action',async()=>{
