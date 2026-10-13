@@ -1,6 +1,6 @@
 {
   "email": "info@svet-edinstva.ru",
-  "maskPath": "",
+  "maskPath": "public/materials/mask.pdf",
   "rulesPath": "public/rules.pdf",
   "heroPath": "public/hero.png",
   "cultureLogoPath": "public/culture-logo.png"

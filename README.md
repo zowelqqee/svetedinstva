@@ -44,9 +44,9 @@ npm run dev
 
 ## Ожидаемые материалы
 
-Настройки находятся в `src/config.json`. Подробные правила подключены как `public/rules.pdf`. Маска пока не предоставлена. Почта подключена: `info@svet-edinstva.ru`; обложка — предоставленный файл `oblozhka (1).png`. Пустые значения показывают уведомления.
+Настройки находятся в `src/config.json`. Обновленные правила подключены как `public/rules.pdf`, маска — как `public/materials/mask.pdf`. Оба файла предоставлены 13 октября 2026 года. Почта подключена: `info@svet-edinstva.ru`; обложка — предоставленный файл `oblozhka (1).png`. Пустые значения показывают уведомления.
 
-- Положить маску в `public/materials/maska.pdf` (или PNG/ZIP); указать `maskPath: "public/materials/maska.pdf"`.
+- Для замены маски обновить `public/materials/mask.pdf` (или указать другой PDF/PNG/ZIP в `maskPath`).
 - Положить PDF правил в `public/rules.pdf`; указать `rulesPath: "public/rules.pdf"`. Он откроется отдельно и доступен для скачивания.
 - Заполнить `email` реальным адресом.
 - Для нового изображения поменять `public/hero.png` или `heroPath`; для логотипа — `cultureLogoPath`.
